@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/GameLobby.unity
+    guid: 271ecdd0103a32643b0ae2aac1bc901d
+  - enabled: 1
     path: Assets/Scenes/GameLevel.unity
     guid: 230b8a1784db8f849946a32e17ad47b0
   - enabled: 1
-    path: Assets/Scenes/GameLobbyX.unity
-    guid: fe3b079d92b490141aa64354d12f3efb
+    path: Assets/Scenes/GameLevel-daniel.unity
+    guid: 3e0913a958c2a834fa71a8d33dde2f3d
   m_configObjects: {}
