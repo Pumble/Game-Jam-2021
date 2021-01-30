@@ -6,6 +6,8 @@ using Photon.Pun;
 
 namespace Pun2Demo
 {
+    public enum CharacterOptions { kid = 0, mom = 1, dad = 2, geko = 3, rat = 4, cockroach = 5 };
+
     public class PlayerMovement : MonoBehaviourPun, IPunObservable
     {
         public float moveSpeed = 5f;
@@ -22,6 +24,8 @@ namespace Pun2Demo
         private List<string> animations = new List<string>();
         private AudioSource sound;
         private List<AudioClip> audios = new List<AudioClip>();
+
+        public CharacterOptions characterType;
 
         #region INTERFAZ
 
