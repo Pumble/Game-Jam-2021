@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 // USING AGREGADOS
 using Photon.Pun;
+using System;
 
 namespace Pun2Demo
 {
@@ -78,7 +79,19 @@ namespace Pun2Demo
             {
                 //Show if this player is a Master Client. There can only be one Master Client per Room so use this to define the authoritative logic etc.)
                 string isMasterClient = (PhotonNetwork.PlayerList[i].IsMasterClient ? ": MasterClient" : "");
-                GUI.Label(new Rect(5, 35 + 30 * i, 200, 25), PhotonNetwork.PlayerList[i].NickName + isMasterClient + "(" + (CharacterOptions)PhotonNetwork.PlayerList[i].TagObject + ")");
+                string characterType = null;
+                try
+                {
+                    characterType = "(" + (CharacterOptions)PhotonNetwork.PlayerList[i].TagObject + ")";
+                }
+                catch (Exception e)
+                {
+                    characterType = "";
+                }
+                finally
+                {
+                    GUI.Label(new Rect(5, 35 + 30 * i, 200, 25), PhotonNetwork.PlayerList[i].NickName + isMasterClient + characterType);
+                }
             }
         }
 

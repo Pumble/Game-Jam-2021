@@ -8,7 +8,7 @@ namespace Pun2Demo
 {
     public enum CharacterOptions : int { kid = 0, mom = 1, dad = 2, geko = 3, rat = 4, cockroach = 5 };
 
-    public class PlayerMovement : MonoBehaviourPun, IPunObservable
+    public class PlayerMovement : MonoBehaviourPun
     {
         public float moveSpeed = 5f;
         public Rigidbody2D rb;
@@ -27,11 +27,7 @@ namespace Pun2Demo
 
         public CharacterOptions characterType;
 
-        #region INTERFAZ
 
-        bool valuesReceived = false;
-
-        #endregion
 
         private void Awake()
         {
@@ -46,9 +42,6 @@ namespace Pun2Demo
                 // INPUT
                 HorizontalInput = Input.GetAxisRaw("Horizontal");
                 VerticalInput = Input.GetAxisRaw("Vertical");
-
-                Debug.Log("x: " + HorizontalInput);
-                Debug.Log("y: " + VerticalInput);
             }
         }
 
@@ -75,26 +68,5 @@ namespace Pun2Demo
         {
             return tieneBandera;
         }
-
-        #region INTERFAZ
-
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        {
-            if (stream.IsWriting)
-            {
-                //We own this player: send the others our data
-                stream.SendNext(HorizontalInput);
-                stream.SendNext(VerticalInput);
-            }
-            else if (!photonView.IsMine)
-            {
-                //Network player, receive data
-                HorizontalInput = (float)stream.ReceiveNext();
-                VerticalInput = (float)stream.ReceiveNext();
-            }
-            valuesReceived = true;
-        }
     }
-
-    #endregion
 }
