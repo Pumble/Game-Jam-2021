@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: aba1728459dde7f47b47ec51d1bd752f
+guid: 560b85f820f299b46b0ef51f08bae94b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -923604830110485338
-    second: kid-idle_0
+      213: -2893149026639035557
+    second: kid-left_0
   - first:
-      213: 8919716017006975401
-    second: kid-idle_1
+      213: 8370839246362780826
+    second: kid-left_1
   - first:
-      213: -233765922071323141
-    second: kid-idle_2
+      213: -4271427935868916706
+    second: kid-left_2
+  - first:
+      213: 4334183419054280107
+    second: kid-left_3
+  - first:
+      213: -7298251059461523986
+    second: kid-left_4
+  - first:
+      213: 5867010775811990789
+    second: kid-left_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -108,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kid-idle_0
+      name: kid-left_0
       rect:
         serializedVersion: 2
         x: 0
@@ -122,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a4fd6cec42be23f0800000000000000
-      internalID: -923604830110485338
+      spriteID: b53c9e0f94879d7d0800000000000000
+      internalID: -2893149026639035557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kid-idle_1
+      name: kid-left_1
       rect:
         serializedVersion: 2
         x: 300
@@ -143,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a91013757239cb70800000000000000
-      internalID: 8919716017006975401
+      spriteID: a942a57a1f13b2470800000000000000
+      internalID: 8370839246362780826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kid-idle_2
+      name: kid-left_2
       rect:
         serializedVersion: 2
         x: 600
@@ -164,8 +173,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfdd856e12f71ccf0800000000000000
-      internalID: -233765922071323141
+      spriteID: e1c6ade5ce6d8b4c0800000000000000
+      internalID: -4271427935868916706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid-left_3
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bad4e1c2bdc162c30800000000000000
+      internalID: 4334183419054280107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid-left_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee57d27445767ba90800000000000000
+      internalID: -7298251059461523986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid-left_5
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 505a9a1473fcb6150800000000000000
+      internalID: 5867010775811990789
       vertices: []
       indices: 
       edges: []

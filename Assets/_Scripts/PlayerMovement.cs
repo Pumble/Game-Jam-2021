@@ -29,6 +29,11 @@ namespace Pun2Demo
 
         #endregion
 
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
+        }
+
         // Update is called once per frame
         void Update()
         {
@@ -37,6 +42,9 @@ namespace Pun2Demo
                 // INPUT
                 HorizontalInput = Input.GetAxisRaw("Horizontal");
                 VerticalInput = Input.GetAxisRaw("Vertical");
+
+                Debug.Log("x: " + HorizontalInput);
+                Debug.Log("y: " + VerticalInput);
             }
         }
 
