@@ -113,7 +113,7 @@ namespace Pun2Demo
             //Room name text field
             roomName = GUILayout.TextField(roomName, GUILayout.Width(250));
 
-            if (GUILayout.Button("Create Room", GUILayout.Width(125)))
+            if (GUILayout.Button("Crear partida", GUILayout.Width(125)))
             {
                 if (roomName != "")
                 {
@@ -135,7 +135,7 @@ namespace Pun2Demo
 
             if (createdRooms.Count == 0)
             {
-                GUILayout.Label("No Rooms were created yet...");
+                GUILayout.Label("No hay partidas disponibles ahora...");
             }
             else
             {
@@ -147,7 +147,7 @@ namespace Pun2Demo
 
                     GUILayout.FlexibleSpace();
 
-                    if (GUILayout.Button("Join Room"))
+                    if (GUILayout.Button("Unirse a la partida"))
                     {
                         joiningRoom = true;
 
@@ -166,14 +166,14 @@ namespace Pun2Demo
             //Set player name and Refresh Room button
             GUILayout.BeginHorizontal();
 
-            GUILayout.Label("Player Name: ", GUILayout.Width(85));
+            GUILayout.Label("Jugador: ", GUILayout.Width(85));
             //Player name text field
             playerName = GUILayout.TextField(playerName, GUILayout.Width(250));
 
             GUILayout.FlexibleSpace();
 
             GUI.enabled = (PhotonNetwork.NetworkClientState == ClientState.JoinedLobby || PhotonNetwork.NetworkClientState == ClientState.Disconnected) && !joiningRoom;
-            if (GUILayout.Button("Refresh", GUILayout.Width(100)))
+            if (GUILayout.Button("Refrescar", GUILayout.Width(100)))
             {
                 if (PhotonNetwork.IsConnected)
                 {
@@ -192,7 +192,7 @@ namespace Pun2Demo
             if (joiningRoom)
             {
                 GUI.enabled = true;
-                GUI.Label(new Rect(900 / 2 - 50, 400 / 2 - 10, 100, 20), "Connecting...");
+                GUI.Label(new Rect(900 / 2 - 50, 400 / 2 - 10, 100, 20), "Conectando...");
             }
         }
 

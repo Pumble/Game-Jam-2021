@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// USING AGREGADOS
+using Photon.Pun;
 
 namespace Pun2Demo
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviourPun, IPunObservable
     {
         public float moveSpeed = 5f;
         public Rigidbody2D rb;
 
-        Vector2 movement;
+        // Vector2 movement;
+        float HorizontalInput = 0.0f;
+        float VerticalInput = 0.0f;
 
         private bool tieneBandera = false;
         public float vida = 100f;
@@ -19,19 +23,33 @@ namespace Pun2Demo
         private AudioSource sound;
         private List<AudioClip> audios = new List<AudioClip>();
 
+        #region INTERFAZ
+
+        bool valuesReceived = false;
+
+        #endregion
+
         // Update is called once per frame
         void Update()
         {
-            // INPUT
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
+            if (photonView.IsMine)
+            {
+                // INPUT
+                HorizontalInput = Input.GetAxisRaw("Horizontal");
+                VerticalInput = Input.GetAxisRaw("Vertical");
+            }
         }
 
         private void FixedUpdate()
         {
             // MOVEMENT
+            Vector2 movement = new Vector2(HorizontalInput, VerticalInput);
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-            if (tieneBandera) {
+
+            animator.SetFloat("Horizontal", HorizontalInput);
+            animator.SetFloat("Vertical", VerticalInput);
+            if (tieneBandera)
+            {
                 GameObject.Find("Bandera").GetComponent<Rigidbody2D>().MovePosition(new Vector2(rb.position.x + 2f, rb.position.y + 2f) + movement * moveSpeed * Time.fixedDeltaTime);
             }
         }
@@ -40,8 +58,31 @@ namespace Pun2Demo
         {
             tieneBandera = tienBand;
         }
-        public bool getTieneBandera() {
+
+        public bool getTieneBandera()
+        {
             return tieneBandera;
         }
+
+        #region INTERFAZ
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                //We own this player: send the others our data
+                stream.SendNext(HorizontalInput);
+                stream.SendNext(VerticalInput);
+            }
+            else if (!photonView.IsMine)
+            {
+                //Network player, receive data
+                HorizontalInput = (float)stream.ReceiveNext();
+                VerticalInput = (float)stream.ReceiveNext();
+            }
+            valuesReceived = true;
+        }
     }
+
+    #endregion
 }
