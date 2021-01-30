@@ -7,7 +7,6 @@ using Photon.Realtime;
 
 namespace Pun2Demo
 {
-
     public class PUN2_GameLobby : MonoBehaviourPunCallbacks
     {
         //Our player name

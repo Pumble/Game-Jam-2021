@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pun2Demo;
 
 public class RecogerBandera : MonoBehaviour
 {
@@ -13,6 +14,5 @@ public class RecogerBandera : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             Debug.Log("Tiene Bandera");
         }
-
     }
 }
