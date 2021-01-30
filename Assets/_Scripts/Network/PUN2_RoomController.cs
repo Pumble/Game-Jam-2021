@@ -11,7 +11,8 @@ namespace Pun2Demo
     public class PUN2_RoomController : MonoBehaviourPunCallbacks
     {
         //Player instance prefab, must be located in the Resources folder
-        public GameObject playerPrefab;
+        public GameObject defaultPrefab;
+        public List<GameObject> playerPrefabs;
         //Player spawn point
         public Transform spawnPoint;
 
@@ -27,7 +28,23 @@ namespace Pun2Demo
             }
 
             //We're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-            PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, Quaternion.identity, 0);
+            CharacterOptions selectedCharacter = (CharacterOptions)PhotonNetwork.LocalPlayer.TagObject;
+            Debug.Log("personaje seleccionado: " + selectedCharacter.ToString());
+
+            GameObject character = null;
+            foreach (GameObject c in playerPrefabs)
+            {
+                if (c.GetComponent<PlayerMovement>().characterType == selectedCharacter)
+                {
+                    character = c;
+                    break;
+                }
+            }
+            if (character == null)
+                character = defaultPrefab;
+            Debug.Log("personaje a mostrar: " + character.name);
+            PhotonNetwork.Instantiate(character.name, spawnPoint.position, Quaternion.identity, 0);
+
         }
 
         #region OVERRIDES
@@ -61,7 +78,7 @@ namespace Pun2Demo
             {
                 //Show if this player is a Master Client. There can only be one Master Client per Room so use this to define the authoritative logic etc.)
                 string isMasterClient = (PhotonNetwork.PlayerList[i].IsMasterClient ? ": MasterClient" : "");
-                GUI.Label(new Rect(5, 35 + 30 * i, 200, 25), PhotonNetwork.PlayerList[i].NickName + isMasterClient);
+                GUI.Label(new Rect(5, 35 + 30 * i, 200, 25), PhotonNetwork.PlayerList[i].NickName + isMasterClient + "(" + (CharacterOptions)PhotonNetwork.PlayerList[i].TagObject + ")");
             }
         }
 

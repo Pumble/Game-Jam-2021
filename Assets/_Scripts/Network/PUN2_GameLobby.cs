@@ -20,6 +20,8 @@ namespace Pun2Demo
         Vector2 roomListScroll = Vector2.zero;
         bool joiningRoom = false;
 
+        CharacterOptions selectedCharacter = CharacterOptions.kid;
+
         // Use this for initialization
         void Start()
         {
@@ -79,6 +81,7 @@ namespace Pun2Demo
             Debug.Log("OnCreatedRoom");
             //Set our player name
             PhotonNetwork.NickName = playerName;
+            PhotonNetwork.LocalPlayer.TagObject = selectedCharacter;
             //Load the Scene called GameLevel (Make sure it's added to build settings)
             PhotonNetwork.LoadLevel("GameLevel");
         }
@@ -153,6 +156,7 @@ namespace Pun2Demo
 
                         //Set our Player name
                         PhotonNetwork.NickName = playerName;
+                        PhotonNetwork.LocalPlayer.TagObject = selectedCharacter;
 
                         //Join the Room
                         PhotonNetwork.JoinRoom(createdRooms[i].Name);
@@ -169,6 +173,18 @@ namespace Pun2Demo
             GUILayout.Label("Jugador: ", GUILayout.Width(85));
             //Player name text field
             playerName = GUILayout.TextField(playerName, GUILayout.Width(250));
+
+            GUIContent[] options = new GUIContent[]
+            {
+                new GUIContent(CharacterOptions.kid.ToString()),
+                new GUIContent(CharacterOptions.mom.ToString()),
+                new GUIContent(CharacterOptions.dad.ToString()),
+                new GUIContent(CharacterOptions.geko.ToString()),
+                new GUIContent(CharacterOptions.rat.ToString()),
+                new GUIContent(CharacterOptions.cockroach.ToString()),
+            };
+            selectedCharacter = (CharacterOptions)GUILayout.SelectionGrid((int)selectedCharacter, options, 3);
+
 
             GUILayout.FlexibleSpace();
 

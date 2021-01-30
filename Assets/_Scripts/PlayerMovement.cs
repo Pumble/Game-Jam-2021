@@ -6,7 +6,7 @@ using Photon.Pun;
 
 namespace Pun2Demo
 {
-    public enum CharacterOptions { kid = 0, mom = 1, dad = 2, geko = 3, rat = 4, cockroach = 5 };
+    public enum CharacterOptions : int { kid = 0, mom = 1, dad = 2, geko = 3, rat = 4, cockroach = 5 };
 
     public class PlayerMovement : MonoBehaviourPun, IPunObservable
     {
