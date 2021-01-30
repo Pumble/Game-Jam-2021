@@ -16,7 +16,7 @@ namespace Pun2Demo
         Vector3 latestPos;
         Quaternion latestRot;
 
-        // Start is called before the first frame update
+        // Use this for initialization
         void Start()
         {
             if (photonView.IsMine)
@@ -25,6 +25,8 @@ namespace Pun2Demo
                 gameObject.tag = "Player";
                 //Add Rigidbody to make the player interact with rigidbody
                 Rigidbody2D r = gameObject.GetComponent<Rigidbody2D>();
+                if (r == null)
+                    r = gameObject.AddComponent<Rigidbody2D>();
                 r.isKinematic = true;
             }
             else
@@ -40,18 +42,6 @@ namespace Pun2Demo
                 }
             }
         }
-
-        void Update()
-        {
-            if (!photonView.IsMine)
-            {
-                //Update remote player (smooth this, this looks good, at the cost of some accuracy)
-                transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
-                transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime * 5);
-            }
-        }
-
-        #region SINCRONIZATION
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
@@ -69,6 +59,15 @@ namespace Pun2Demo
             }
         }
 
-        #endregion
+        // Update is called once per frame
+        void Update()
+        {
+            if (!photonView.IsMine)
+            {
+                //Update remote player (smooth this, this looks good, at the cost of some accuracy)
+                transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
+                transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime * 5);
+            }
+        }
     }
 }

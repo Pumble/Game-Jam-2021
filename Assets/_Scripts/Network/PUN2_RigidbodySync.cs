@@ -8,35 +8,20 @@ namespace Pun2Demo
 {
     public class PUN2_RigidbodySync : MonoBehaviourPun, IPunObservable
     {
-        Rigidbody r;
+        Rigidbody2D r;
 
         Vector3 latestPos;
         Quaternion latestRot;
-        Vector3 velocity;
-        Vector3 angularVelocity;
+        Vector2 velocity;
+        float angularVelocity;
 
         bool valuesReceived = false;
 
         // Start is called before the first frame update
         void Start()
         {
-            r = GetComponent<Rigidbody>();
+            r = GetComponent<Rigidbody2D>();
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-            if (!photonView.IsMine && valuesReceived)
-            {
-                //Update Object position and Rigidbody parameters
-                transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
-                transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime * 5);
-                r.velocity = velocity;
-                r.angularVelocity = angularVelocity;
-            }
-        }
-
-        #region EVENTS
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
@@ -53,10 +38,23 @@ namespace Pun2Demo
                 //Network player, receive data
                 latestPos = (Vector3)stream.ReceiveNext();
                 latestRot = (Quaternion)stream.ReceiveNext();
-                velocity = (Vector3)stream.ReceiveNext();
-                angularVelocity = (Vector3)stream.ReceiveNext();
+                velocity = (Vector2)stream.ReceiveNext();
+                angularVelocity = (float)stream.ReceiveNext();
 
                 valuesReceived = true;
+            }
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (!photonView.IsMine && valuesReceived)
+            {
+                //Update Object position and Rigidbody parameters
+                transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
+                transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime * 5);
+                r.velocity = velocity;
+                r.angularVelocity = angularVelocity;
             }
         }
 
@@ -72,7 +70,5 @@ namespace Pun2Demo
                 }
             }
         }
-
-        #endregion
     }
 }
