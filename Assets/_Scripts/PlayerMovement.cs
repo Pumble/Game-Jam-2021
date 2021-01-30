@@ -11,6 +11,12 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movement;
 
+    private Animator animator;
+    private List<string> animations = new List<string>();
+    private AudioSource sound;
+    private List<AudioClip> audios = new List<AudioClip>();
+
+
     // Update is called once per frame
     void Update()
     {
