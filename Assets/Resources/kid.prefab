@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7042678394261235952}
   m_Layer: 0
   m_Name: Disparador
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,6 +186,10 @@ MonoBehaviour:
   moveSpeed: 6
   rb: {fileID: 6253949350444991187}
   vida: 75
+  sound: {fileID: 0}
+  audios:
+  - {fileID: 8300000, guid: 277996199e43f9b40a94c2c12b56662a, type: 3}
+  keys: 77000000640000007300000061000000
   characterType: 0
   ReSpawnPoint: {fileID: 0}
 --- !u!114 &5304993574044175247
