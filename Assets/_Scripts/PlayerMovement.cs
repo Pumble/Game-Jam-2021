@@ -9,10 +9,13 @@ public class PlayerMovement : MonoBehaviour
     private bool tieneBandera = false;
     public float vida = 100f;
 
-    public Animator animator;
+    private Animator animator;
     public List<string> animations = new List<string>();
-    static AudioSource sound;
+    public static AudioSource sound;
     public List<AudioClip> audios = new List<AudioClip>();
+
+    private bool reproducirSonidoPaso = true;
+
 
 
     Vector2 movement;
@@ -34,11 +37,21 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // MOVEMENT
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-        if (tieneBandera)
-        {
-            GameObject.Find("Bandera").GetComponent<Rigidbody2D>().MovePosition(new Vector2(rb.position.x + 2f, rb.position.y + 2f) + movement * moveSpeed * Time.fixedDeltaTime);
+        if (GameManager.partidaEnCurso) {
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            if (tieneBandera)
+            {
+                GameObject.Find("Bandera").GetComponent<Rigidbody2D>().MovePosition(new Vector2(rb.position.x + 2f, rb.position.y + 2f) + movement * moveSpeed * Time.fixedDeltaTime);
+            }
+            if (reproducirSonidoPaso)
+            {
+                sound.PlayOneShot(audios[0]);
+                reproducirSonidoPaso = false;
+
+                StartCoroutine("corrutinaReproducirPaso");
+            }
         }
+        
     }
     public void setTieneBandera(bool tienBand)
     {
@@ -47,5 +60,10 @@ public class PlayerMovement : MonoBehaviour
     public bool getTieneBandera()
     {
         return tieneBandera;
+    }
+    IEnumerator corrutinaReproducirPaso()
+    {
+        yield return new WaitForSeconds((float)0.1);
+        reproducirSonidoPaso = true;
     }
 }
