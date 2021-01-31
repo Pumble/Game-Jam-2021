@@ -6,7 +6,17 @@ namespace Pun2Demo
 {
     public class PUN2_FlagSync : MonoBehaviourPun, IPunObservable
     {
-        Vector3 latestPos;
+        Vector3 lastesPosition;
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (lastesPosition != transform.position)
+            {
+                transform.right = transform.position - lastesPosition;
+                lastesPosition = transform.position;
+            }
+        }
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
@@ -18,15 +28,8 @@ namespace Pun2Demo
             else
             {
                 //Network player, receive data
-                latestPos = (Vector3)stream.ReceiveNext();
+                lastesPosition = (Vector3)stream.ReceiveNext();
             }
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            //Update remote player (smooth this, this looks good, at the cost of some accuracy)
-            transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 2);
         }
     }
 }
