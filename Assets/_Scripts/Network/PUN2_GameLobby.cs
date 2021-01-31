@@ -86,11 +86,6 @@ namespace Pun2Demo
             PhotonNetwork.LoadLevel("GameLevel");
         }
 
-        public override void OnJoinedRoom()
-        {
-            Debug.Log("OnJoinedRoom");
-        }
-
         #endregion
 
         #region UI

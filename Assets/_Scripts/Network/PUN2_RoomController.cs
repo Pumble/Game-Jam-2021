@@ -78,6 +78,11 @@ namespace Pun2Demo
             }
         }
 
+        public override void OnJoinedRoom()
+        {
+            Debug.Log("OnJoinedRoom CCCCCCCCCCCCCCCCCCCCC");
+        }
+
         #region OVERRIDES
 
         public override void OnLeftRoom()
