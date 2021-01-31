@@ -22,8 +22,8 @@ public class RecogerBandera : MonoBehaviour
             GameObject.Find(collision.name).GetComponent<Player>().tieneBandera = true;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             Debug.Log("Tiene Bandera");
-            int audioIndex = Random.Range(0, audios.Count - 1);
-            sound.PlayOneShot(audios[audioIndex]);
+            //int audioIndex = Random.Range(0, audios.Count - 1);
+            sound.PlayOneShot(audios[0]);
         }
     }
 

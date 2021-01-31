@@ -11,10 +11,14 @@ public class Shoot : MonoBehaviourPun
     public float _distance;
     public bool shoot = true;
 
+    public static AudioSource sound;
+    public List<AudioClip> audios = new List<AudioClip>();
+
     // Start is called before the first frame update
     void Start()
     {
         _distance = 20f;
+        sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,6 +44,7 @@ public class Shoot : MonoBehaviourPun
     IEnumerator coRoutineShoot()
     {
         yield return new WaitForSeconds((float)0.33);
+        sound.PlayOneShot(audios[0]);
         shoot = true;
     }
 }
