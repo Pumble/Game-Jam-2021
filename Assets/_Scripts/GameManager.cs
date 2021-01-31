@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Text puntosAliados;
     public Text puntosEnemigos;
     public Text tiempoPartidaLabel;
+    public GameObject winPanel;
 
     void Start()
     {
@@ -79,6 +80,10 @@ public class GameManager : MonoBehaviour
     {
         // REVISAR EL QUE YA GANO
         // STATE WIN
+        if (puntosEquipoAliado >= 3 || puntosEquipoEnemigo >= 3)
+        {
+            gameObject.SetActive(true);
+        }
 
         if (puntosAliados)
             puntosAliados.text = puntosEquipoAliado.ToString();
