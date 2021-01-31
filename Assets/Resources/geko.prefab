@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cde17fbfbebe148b4c79f4b0d6b4c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 4
   rb: {fileID: 6253949350444991187}
   sound: {fileID: 0}
   audios:
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tieneBandera: 0
-  vida: 100
+  vida: 150
   characterType: 3
   ReSpawnPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &8569437691600094958
