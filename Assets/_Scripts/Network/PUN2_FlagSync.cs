@@ -25,11 +25,8 @@ namespace Pun2Demo
         // Update is called once per frame
         void Update()
         {
-            if (!photonView.IsMine)
-            {
-                //Update remote player (smooth this, this looks good, at the cost of some accuracy)
-                transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 2);
-            }
+            //Update remote player (smooth this, this looks good, at the cost of some accuracy)
+            transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime);
         }
     }
 }
