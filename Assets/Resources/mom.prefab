@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -8193000856625931033, guid: 99b4d9a82141eb24882653572c4671bb,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -129,6 +129,7 @@ MonoBehaviour:
   rb: {fileID: 6253949350444991187}
   vida: 135
   characterType: 1
+  ReSpawnPoint: {fileID: 0}
 --- !u!114 &5304993574044175247
 MonoBehaviour:
   m_ObjectHideFlags: 0
