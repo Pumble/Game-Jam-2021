@@ -10,15 +10,18 @@ namespace Pun2Demo
     {
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
-            if (stream.IsWriting)
+            if (PhotonNetwork.IsMasterClient)
             {
-                //We own this player: send the others our data
-                stream.SendNext(GameManager.getPuntosEquipoAliado());
-                stream.SendNext(GameManager.getPuntosEquipoEnemigo());
-                stream.SendNext(GameManager.getTiempoPartida());
-                stream.SendNext(GameManager.partidaEnCurso);
+                if (stream.IsWriting)
+                {
+                    //We own this player: send the others our data
+                    stream.SendNext(GameManager.getPuntosEquipoAliado());
+                    stream.SendNext(GameManager.getPuntosEquipoEnemigo());
+                    stream.SendNext(GameManager.getTiempoPartida());
+                    stream.SendNext(GameManager.partidaEnCurso);
+                }
             }
-            else
+            if (stream.IsReading)
             {
                 //Network player, receive data
                 GameManager.setPuntosEquipoAliado((int)stream.ReceiveNext());
