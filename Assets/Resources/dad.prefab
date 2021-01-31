@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360cf22a7c4aea148960ce58712e73b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tieneBandera: 1
+  tieneBandera: 0
   vida: 200
   characterType: 2
   ReSpawnPoint: {x: 0, y: 0, z: 0}
