@@ -1,0 +1,3 @@
+-Caminar
+-Lanzar Objetos(chancletas)
+-Score a flag
