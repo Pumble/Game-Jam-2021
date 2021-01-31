@@ -68,6 +68,7 @@ namespace Pun2Demo
 
                 if (vida <= 0)
                 {
+                    _player.tieneBandera = false;
                     transform.position = _player.ReSpawnPoint;
                     latestPos = _player.ReSpawnPoint;
                 }
