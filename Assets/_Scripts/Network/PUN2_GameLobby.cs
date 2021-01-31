@@ -4,6 +4,7 @@ using UnityEngine;
 // USING AGREGADOS
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 namespace Pun2Demo
 {
@@ -197,6 +198,10 @@ namespace Pun2Demo
                     //We are not connected, estabilish a new connection
                     PhotonNetwork.ConnectUsingSettings();
                 }
+            }
+            if (GUILayout.Button("¿Cómo jugar?", GUILayout.Width(140)))
+            {
+                SceneManager.LoadScene("GameHelp", LoadSceneMode.Single);
             }
 
             GUILayout.EndHorizontal();
