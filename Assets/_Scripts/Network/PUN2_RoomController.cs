@@ -7,18 +7,24 @@ using System;
 
 namespace Pun2Demo
 {
-    // REFERENCIA: https://sharpcoderblog.com/blog/make-a-multiplayer-game-in-unity-3d-using-pun-2
+    /* REFERENCIA 
+     * ONLINE: https://sharpcoderblog.com/blog/make-a-multiplayer-game-in-unity-3d-using-pun-2
+     * ASIGNAR OBJETO COMO HIJO DE OTRO: https://answers.unity.com/questions/478051/how-to-add-child-gameobjects-to-parent-in-script.html
+     * OBTENER LA MAIN CAMERA: https://forum.unity.com/threads/script-of-camera-as-a-child-of-player.427287/
+     */
 
     public class PUN2_RoomController : MonoBehaviourPunCallbacks
     {
         //Player instance prefab, must be located in the Resources folder
+        [Header("Si algún prefab no se encuentra, se utiliza este")]
         public GameObject defaultPrefab;
+        [Header("Arrays de prefabs que se utilizarán en las partidas online")]
         public List<GameObject> playerPrefabs;
+
         //Player spawn point
         public Transform spawnPoint;
 
-        [Header("Asignar acá la cámara para el jugador local")]
-        public Camera _camera;
+        private Camera _camera;
 
         private void Awake()
         {

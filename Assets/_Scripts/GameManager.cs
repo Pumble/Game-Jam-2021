@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private static int puntosEquipoAliado;
     private static int puntosEquipoEnemigo;
     private static float tiempoPartida;
+    public static bool partidaEnCurso;
 
     void Start()
     {
