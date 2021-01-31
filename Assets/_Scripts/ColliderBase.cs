@@ -9,32 +9,44 @@ public class ColliderBase : MonoBehaviour
 
     public static AudioSource sound;
     public List<AudioClip> audios = new List<AudioClip>();
+    public bool casaFamilia;
 
     void Start()
     {
         sound = GetComponent<AudioSource>();
+        casaFamilia = GetComponent<ColliderBase>().casaFamilia;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && GameObject.Find(collision.name).GetComponent<Player>().tieneBandera)
+        if ((collision.CompareTag("Player")) && GameObject.Find(collision.name).GetComponent<Player>().tieneBandera && casaFamilia)
         {
             GameObject.Find(collision.name).GetComponent<Player>().tieneBandera = false;
             GameObject.Find("Flag").GetComponent<BoxCollider2D>().enabled = true;
 
-            Rigidbody2D casaDuendes = GameObject.Find("CasaDuendes").GetComponent<Rigidbody2D>();
-            /*
-            Vector2 movement;
-            movement.x = 0;
-            movement.y = 0;
+            Transform UbicaconBandera = GameObject.Find("UbicaconBandera").GetComponent<Transform>();
 
-            GameObject.Find("Bandera").GetComponent<Rigidbody2D>().MovePosition(new Vector2(rigidbody2D.position.x, rigidbody2D.position.y) + movement * 5f * Time.fixedDeltaTime);
-            */
             sound.PlayOneShot(audios[0]);
 
-            GameObject.Find("Flag").GetComponent<Transform>().position = new Vector2(casaDuendes.position.x, casaDuendes.position.y);
+            GameObject.Find("Flag").GetComponent<Transform>().position = new Vector2(UbicaconBandera.position.x, UbicaconBandera.position.y);
             GameManager.setPuntosEquipoAliado(GameManager.getPuntosEquipoAliado() + 1);
 
             Debug.Log("Punto Anotado " + GameManager.getPuntosEquipoAliado());
+        }
+        else {
+            if ((collision.CompareTag("enemyPlayer")) && GameObject.Find(collision.name).GetComponent<Player>().tieneBandera && !casaFamilia)
+            {
+                GameObject.Find(collision.name).GetComponent<Player>().tieneBandera = false;
+                GameObject.Find("Flag").GetComponent<BoxCollider2D>().enabled = true;
+
+                Transform UbicaconBandera = GameObject.Find("UbicaconBandera").GetComponent<Transform>();
+
+                sound.PlayOneShot(audios[0]);
+
+                GameObject.Find("Flag").GetComponent<Transform>().position = new Vector2(UbicaconBandera.position.x, UbicaconBandera.position.y);
+                GameManager.setPuntosEquipoEnemigo(GameManager.getPuntosEquipoEnemigo() + 1);
+
+                Debug.Log("Punto Anotado " + GameManager.getPuntosEquipoEnemigo());
+            }
         }
     }
 }
