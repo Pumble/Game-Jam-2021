@@ -2,6 +2,8 @@
 
 public class CameraFollow2D : MonoBehaviour
 {
+    // REFERENCIA: https://www.youtube.com/watch?v=MFQhpwc6cKE&ab_channel=Brackeys
+
     public Transform target;
 
     public float smootSpeed = 10f;
