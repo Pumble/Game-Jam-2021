@@ -2083,21 +2083,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flag
       objectReference: {fileID: 0}
-    - target: {fileID: 5985191403482430255, guid: dcc53b5f3d529a045975c6c54b95df8a,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5985191403482430255, guid: dcc53b5f3d529a045975c6c54b95df8a,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5985191403482430255, guid: dcc53b5f3d529a045975c6c54b95df8a,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5985191403482430256, guid: dcc53b5f3d529a045975c6c54b95df8a,
         type: 3}
       propertyPath: m_RootOrder
@@ -2151,11 +2136,6 @@ PrefabInstance:
     - target: {fileID: 5985191403482430256, guid: dcc53b5f3d529a045975c6c54b95df8a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5985191403482430259, guid: dcc53b5f3d529a045975c6c54b95df8a,
-        type: 3}
-      propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
