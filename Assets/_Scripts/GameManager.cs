@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 // USING AGREGADOS
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using Photon.Pun;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPun
 {
     [Header("Game Manager del nivel")]
     private static int puntosEquipoAliado;
@@ -16,12 +18,13 @@ public class GameManager : MonoBehaviour
     public Text puntosEnemigos;
     public Text tiempoPartidaLabel;
     public GameObject winPanel;
+    public Text winLabel;
 
     void Start()
     {
         puntosEquipoAliado = 0;
         puntosEquipoEnemigo = 0;
-        tiempoPartida = 300;
+        tiempoPartida = 120;
         partidaEnCurso = true;
         InvokeRepeating("updateTime", 1f, 1f);
     }
@@ -34,6 +37,26 @@ public class GameManager : MonoBehaviour
             if (tiempoPartida <= 0)
             {
                 partidaEnCurso = false;
+
+
+                // REVISAR EL QUE YA GANO
+                winPanel.SetActive(true);
+                // STATE WIN
+                if (puntosEquipoAliado > puntosEquipoEnemigo)
+                {
+                    // GANARON LOS ALIADOS
+                    winLabel.text = "LA FAMILIA";
+                }
+                else if (puntosEquipoAliado == puntosEquipoEnemigo)
+                {
+                    // HUBO EMPATE
+                    winLabel.text = "¡EMPATE!";
+                }
+                else
+                {
+                    // GANARON LOS GNOMOS
+                    winLabel.text = "LOS GNOMOS";
+                }
             }
         }
     }
@@ -78,18 +101,16 @@ public class GameManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        // REVISAR EL QUE YA GANO
-        // STATE WIN
-        if (puntosEquipoAliado >= 3 || puntosEquipoEnemigo >= 3)
-        {
-            gameObject.SetActive(true);
-        }
-
         if (puntosAliados)
             puntosAliados.text = puntosEquipoAliado.ToString();
         if (puntosEnemigos)
             puntosEnemigos.text = puntosEquipoEnemigo.ToString();
         if (tiempoPartidaLabel)
             tiempoPartidaLabel.text = tiempoPartida.ToString();
+    }
+
+    public void OnClickBackToLobby()
+    {
+        PhotonNetwork.LeaveRoom();
     }
 }
