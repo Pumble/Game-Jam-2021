@@ -75,8 +75,6 @@ namespace Pun2Demo
             if (_camera != null && player != null)
             {
                 _camera.GetComponent<CameraFollow2D>().target = player.transform;
-                // _camera.transform.parent = player.transform;
-                // _camera.transform.position = new Vector3(0, 0, -15); // REINICIAMOS LA CÁMARA DEL JUGADOR PARA QUE LO SIGA
             }
         }
 

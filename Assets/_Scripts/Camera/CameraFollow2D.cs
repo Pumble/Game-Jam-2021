@@ -7,12 +7,12 @@ public class CameraFollow2D : MonoBehaviour
     public float smootSpeed = 10f;
     public Vector3 offset;
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         if (target)
         {
             Vector3 desiredPosition = target.position + offset;
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smootSpeed * Time.deltaTime);
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smootSpeed);
             transform.position = smoothedPosition;
         }
     }
