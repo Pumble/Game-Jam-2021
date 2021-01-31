@@ -17,6 +17,14 @@ namespace Pun2Demo
         //Player spawn point
         public Transform spawnPoint;
 
+        [Header("Asignar acá la cámara para el jugador local")]
+        public Camera _camera;
+
+        private void Awake()
+        {
+            _camera = Camera.main;
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -44,8 +52,11 @@ namespace Pun2Demo
             if (character == null)
                 character = defaultPrefab;
             Debug.Log("personaje a mostrar: " + character.name);
-            PhotonNetwork.Instantiate(character.name, spawnPoint.position, Quaternion.identity, 0);
+            GameObject player = PhotonNetwork.Instantiate(character.name, spawnPoint.position, Quaternion.identity, 0);
 
+            // ASIGNAR LA CAMARA AL JUGADOR
+            if (_camera != null && player != null)
+                _camera.transform.parent = player.transform;
         }
 
         #region OVERRIDES
