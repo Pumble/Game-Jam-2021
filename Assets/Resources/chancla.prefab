@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6160263982809913152}
   - component: {fileID: 6389536099621020731}
   - component: {fileID: 7849197214490026007}
+  - component: {fileID: -5661984658153925268}
   m_Layer: 0
   m_Name: chancla
   m_TagString: Chancleta
@@ -136,7 +137,6 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 718796130347870358}
   - {fileID: 6389536099621020731}
-  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -318,3 +318,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ba5bb47f3a97ad7409d412d2629be454, type: 3}
   damage: 25
   destroy: 1
+--- !u!114 &-5661984658153925268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6467766447063667497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e375b42e8d96147b00708068199ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

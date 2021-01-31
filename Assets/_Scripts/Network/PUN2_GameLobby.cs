@@ -89,6 +89,7 @@ namespace Pun2Demo
         #endregion
 
         #region UI
+
         void OnGUI()
         {
             GUI.Window(0, new Rect(Screen.width / 2 - 450, Screen.height / 2 - 200, 900, 400), LobbyWindow, "Lobby");

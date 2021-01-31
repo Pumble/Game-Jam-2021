@@ -25,7 +25,8 @@ public class Shoot : MonoBehaviourPun
             if (Input.GetMouseButtonDown(0) && shoot)
             {
                 shoot = false;
-                Instantiate(bullet, transform.position, transform.rotation);
+                // Instantiate(bullet, transform.position, transform.rotation);
+                PhotonNetwork.Instantiate(bullet.name, transform.position, transform.rotation);
                 StartCoroutine("coRoutineShoot");
             }
         }
