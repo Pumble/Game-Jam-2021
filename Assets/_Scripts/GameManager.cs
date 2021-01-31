@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         puntosEquipoAliado = 0;
         puntosEquipoEnemigo = 0;
         tiempoPartida = 300;
+        partidaEnCurso = true;
     }
 
     #region SETTERS

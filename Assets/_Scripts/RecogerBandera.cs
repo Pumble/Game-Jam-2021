@@ -23,7 +23,13 @@ public class RecogerBandera : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             Debug.Log("Tiene Bandera");
             int audioIndex = Random.Range(0, audios.Count - 1);
-            sound.PlayOneShot(audios[0]);
+            sound.PlayOneShot(audios[audioIndex]);
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(transform.position, new Vector3(1, 1, 1));
     }
 }

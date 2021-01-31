@@ -15,10 +15,10 @@ GameObject:
   - component: {fileID: 5304993574044175247}
   - component: {fileID: 7606979775279630915}
   - component: {fileID: 7447545162984642529}
-  - component: {fileID: 3177681172900283558}
   - component: {fileID: 461126900}
   - component: {fileID: 796738011489562286}
   - component: {fileID: 5234972237505082778}
+  - component: {fileID: 4366447038652150271}
   m_Layer: 0
   m_Name: cockroach
   m_TagString: Player
@@ -181,22 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ee9e94c5967ad4a9b5a6bcd401271d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &3177681172900283558
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6253949350444991197}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.042396486, y: 0}
-  m_Size: {x: 1.8976928, y: 3}
-  m_Direction: 0
 --- !u!95 &461126900
 Animator:
   serializedVersion: 3
@@ -336,6 +320,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!61 &4366447038652150271
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6253949350444991197}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.87, y: 2.94}
+    newSize: {x: 3, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.4}
+  m_EdgeRadius: 0
 --- !u!1 &7897603691078191920
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,8 +355,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4463779154748472673}
+  - component: {fileID: 6926559758550288175}
+  - component: {fileID: 1695211705513207305}
   m_Layer: 0
-  m_Name: SpawningBullets
+  m_Name: Disparador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -366,3 +378,30 @@ Transform:
   m_Father: {fileID: 6253949350444991185}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6926559758550288175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897603691078191920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aafed0d440ee46e4bab3f7cc1c1287eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1695211705513207305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897603691078191920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5064288578cea2148b36003a0b7e9b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 6467766447063667497, guid: 58eeb18d89209ff4a864dfab8bdc3765, type: 3}
+  _distance: 100
+  shoot: 1

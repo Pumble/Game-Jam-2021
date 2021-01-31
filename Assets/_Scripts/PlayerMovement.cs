@@ -46,7 +46,6 @@ namespace Pun2Demo
         {
             if (photonView.IsMine)
             {
-                // INPUT
                 HorizontalInput = Input.GetAxisRaw("Horizontal");
                 VerticalInput = Input.GetAxisRaw("Vertical");
             }
@@ -64,9 +63,9 @@ namespace Pun2Demo
                 animator.SetFloat("Vertical", VerticalInput);
                 if (tieneBandera)
                 {
-                    GameObject.Find("Bandera").GetComponent<Rigidbody2D>().MovePosition(new Vector2(rb.position.x + 2f, rb.position.y + 2f) + movement * moveSpeed * Time.fixedDeltaTime);
+                    GameObject.Find("Flag").GetComponent<Rigidbody2D>().MovePosition(new Vector2(rb.position.x + 2f, rb.position.y + 2f) + movement * moveSpeed * Time.fixedDeltaTime);
                 }
-                if (reproducirSonidoPaso)
+                if (reproducirSonidoPaso && audios.Count > 0)
                 {
                     sound.PlayOneShot(audios[0]);
                     reproducirSonidoPaso = false;
@@ -91,5 +90,13 @@ namespace Pun2Demo
             yield return new WaitForSeconds((float)0.1);
             reproducirSonidoPaso = true;
         }
+
+        #region DEBUG
+        void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(transform.position, new Vector3(1, 1, 1));
+        }
+        #endregion
     }
 }
