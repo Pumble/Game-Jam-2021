@@ -6,8 +6,6 @@ using Photon.Pun;
 
 namespace Pun2Demo
 {
-    public enum CharacterOptions : int { kid = 0, mom = 1, dad = 2, geko = 3, rat = 4, cockroach = 5 };
-
     public class PlayerMovement : MonoBehaviourPun
     {
         #region VARS
@@ -21,26 +19,21 @@ namespace Pun2Demo
         float HorizontalInput = 0.0f;
         float VerticalInput = 0.0f;
 
-        private bool tieneBandera = false;
-        [Header("Cantidad de salud del personaje")]
-        public float vida = 100f;
-
         private Animator animator;
         public AudioSource sound;
         public List<AudioClip> audios = new List<AudioClip>();
         private bool reproducirSonidoPaso = true;
         public List<KeyCode> keys = new List<KeyCode>();
 
-        [Header("Lista de personajes disponibles para jugar, establece el tipo del prefab")]
-        public CharacterOptions characterType;
+        private Player _player;
 
-        public Transform ReSpawnPoint;
         #endregion
 
         private void Awake()
         {
             animator = GetComponent<Animator>();
             sound = GetComponent<AudioSource>();
+            _player = GetComponent<Player>();
         }
 
         // Update is called once per frame
@@ -55,7 +48,7 @@ namespace Pun2Demo
 
         private void FixedUpdate()
         {
-            if (GameManager.partidaEnCurso && vida > 0)
+            if (GameManager.partidaEnCurso && _player.vida > 0)
             {
                 // MOVEMENT
                 Vector2 movement = new Vector2(HorizontalInput, VerticalInput);
@@ -63,7 +56,7 @@ namespace Pun2Demo
 
                 animator.SetFloat("Horizontal", HorizontalInput);
                 animator.SetFloat("Vertical", VerticalInput);
-                if (tieneBandera)
+                if (_player.tieneBandera)
                 {
                     GameObject.Find("Flag").GetComponent<Rigidbody2D>().MovePosition(new Vector2(rb.position.x + 2f, rb.position.y + 2f) + movement * moveSpeed * Time.fixedDeltaTime);
                 }
@@ -75,16 +68,6 @@ namespace Pun2Demo
                     StartCoroutine("corrutinaReproducirPaso");
                 }
             }
-        }
-
-        public void setTieneBandera(bool tienBand)
-        {
-            tieneBandera = tienBand;
-        }
-
-        public bool getTieneBandera()
-        {
-            return tieneBandera;
         }
 
         IEnumerator corrutinaReproducirPaso()

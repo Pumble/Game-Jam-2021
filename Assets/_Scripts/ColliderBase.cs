@@ -16,9 +16,9 @@ public class ColliderBase : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && GameObject.Find(collision.name).GetComponent<PlayerMovement>().getTieneBandera())
+        if (collision.CompareTag("Player") && GameObject.Find(collision.name).GetComponent<Player>().tieneBandera)
         {
-            GameObject.Find(collision.name).GetComponent<PlayerMovement>().setTieneBandera(false);
+            GameObject.Find(collision.name).GetComponent<Player>().tieneBandera = false;
             GameObject.Find("Flag").GetComponent<BoxCollider2D>().enabled = true;
 
             Rigidbody2D casaDuendes = GameObject.Find("CasaDuendes").GetComponent<Rigidbody2D>();

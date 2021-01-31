@@ -17,9 +17,9 @@ public class RecogerBandera : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !GameObject.Find(collision.name).GetComponent<PlayerMovement>().getTieneBandera())
+        if (collision.CompareTag("Player") && !GameObject.Find(collision.name).GetComponent<Player>().tieneBandera)
         {
-            GameObject.Find(collision.name).GetComponent<PlayerMovement>().setTieneBandera(true);
+            GameObject.Find(collision.name).GetComponent<Player>().tieneBandera = true;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             Debug.Log("Tiene Bandera");
             int audioIndex = Random.Range(0, audios.Count - 1);
@@ -27,9 +27,13 @@ public class RecogerBandera : MonoBehaviour
         }
     }
 
+    #region DEBUG
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(transform.position, new Vector3(1, 1, 1));
     }
+
+    #endregion
 }

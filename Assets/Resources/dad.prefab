@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 461126900}
   - component: {fileID: 796738011489562286}
   - component: {fileID: 7725016654101981110}
+  - component: {fileID: 210485021}
   m_Layer: 0
   m_Name: dad
   m_TagString: Player
@@ -186,13 +187,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   rb: {fileID: 6253949350444991187}
-  vida: 200
   sound: {fileID: 0}
   audios:
   - {fileID: 8300000, guid: 277996199e43f9b40a94c2c12b56662a, type: 3}
   keys: 77000000640000007300000061000000
-  characterType: 2
-  ReSpawnPoint: {fileID: 0}
 --- !u!114 &5304993574044175247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +300,7 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Vertical
   m_SynchronizeLayers:
-  - SynchronizeType: 1
+  - SynchronizeType: 2
     LayerIndex: 0
 --- !u!82 &7725016654101981110
 AudioSource:
@@ -400,3 +398,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &210485021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6253949350444991197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 360cf22a7c4aea148960ce58712e73b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tieneBandera: 1
+  vida: 200
+  characterType: 2
+  ReSpawnPoint: {fileID: 0}

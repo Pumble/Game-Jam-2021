@@ -51,7 +51,7 @@ namespace Pun2Demo
             GameObject character = null;
             foreach (GameObject c in playerPrefabs)
             {
-                if (c.GetComponent<PlayerMovement>().characterType == selectedCharacter)
+                if (c.GetComponent<Player>().characterType == selectedCharacter)
                 {
                     character = c;
                     break;
@@ -69,7 +69,7 @@ namespace Pun2Demo
             else
                 spawnPoint = GetComponent<Transform>(); // En caso de que todo falle, sale en el 0.0.0
             GameObject player = PhotonNetwork.Instantiate(character.name, spawnPoint.position, Quaternion.identity, 0);
-            player.GetComponent<PlayerMovement>().ReSpawnPoint = spawnPoint; // ASIGNAR EL PUNTO DE SPAWN CORRESPONDIENTE
+            player.GetComponent<Player>().ReSpawnPoint = spawnPoint; // ASIGNAR EL PUNTO DE SPAWN CORRESPONDIENTE
 
             // ASIGNAR LA CAMARA AL JUGADOR
             if (_camera != null && player != null)

@@ -22,7 +22,7 @@ namespace Pun2Demo
             if (photonView.IsMine)
             {
                 //Player is local
-                gameObject.tag = "Player";
+                // gameObject.tag = "Player";
                 //Add Rigidbody to make the player interact with rigidbody
                 Rigidbody2D r = gameObject.GetComponent<Rigidbody2D>();
                 if (r == null)
