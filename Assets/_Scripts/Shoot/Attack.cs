@@ -27,36 +27,55 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject player = GameObject.Find(collision.name);
-        Debug.Log(player.name);
-
-
-
-        player.GetComponent<Player>().vida -= damage;
-        Debug.Log("Sufrio daño: " + damage + ", vida actual: " + player.GetComponent<Player>().vida);
-        sound.PlayOneShot(audios[0]);
-
-        if (
-            (collision.CompareTag("enemyPlayer") && this.gameObject.CompareTag("Chancleta"))
-            ||
-            (collision.CompareTag("Player") && this.gameObject.CompareTag("Trebol"))
-        )
+        if (collision.CompareTag("enemyPlayer") && this.gameObject.CompareTag("Chancleta"))
         {
-            if (player.GetComponent<Player>().vida <= 0)
+            GameObject enemyPlayer = GameObject.Find(collision.name);
+            enemyPlayer.GetComponent<Player>().vida -= damage;
+            Debug.Log("Enemigo Sufrio daño, vida actual " + enemyPlayer.GetComponent<Player>().vida);
+
+            sound.PlayOneShot(audios[0]);
+
+            if (enemyPlayer.GetComponent<Player>().vida <= 0)
             {
                 Debug.Log("El jugador enemigo murio, regresa a la base ");
                 // Rigidbody2D CasaDuendes = GameObject.Find("CasaDuendes").GetComponent<Rigidbody2D>();
-                if (player.GetComponent<Player>().tieneBandera)
+                if (enemyPlayer.GetComponent<Player>().tieneBandera)
                 {
                     GameObject.Find("Flag").GetComponent<BoxCollider2D>().enabled = true;
-                    player.GetComponent<Player>().tieneBandera = false;
+                    enemyPlayer.GetComponent<Player>().tieneBandera = false;
                 }
 
-                // enemyPlayer.GetComponent<Transform>().position = new Vector2(CasaDuendes.position.x, CasaDuendes.position.y);
-                player.GetComponent<Transform>().position = player.GetComponent<Player>().ReSpawnPoint.position;
-                player.GetComponent<Player>().vida = 100f;
+
+                enemyPlayer.GetComponent<Transform>().position = enemyPlayer.GetComponent<Player>().ReSpawnPoint.position; // new Vector2(CasaDuendes.position.x, CasaDuendes.position.y);
+                enemyPlayer.GetComponent<Player>().vida = 100f;
             }
             Destroy(this.gameObject, (float)0.3);
+        }
+        else
+        {
+            if (collision.CompareTag("Player") && this.gameObject.CompareTag("Trebol"))
+            {
+                GameObject player = GameObject.Find(collision.name);
+                player.GetComponent<Player>().vida -= damage;
+                Debug.Log("Sufrio daño, vida actual " + player.GetComponent<Player>().vida);
+
+                sound.PlayOneShot(audios[0]);
+
+                if (player.GetComponent<Player>().vida <= 0)
+                {
+                    Debug.Log("El jugador murio, regresa a la base ");
+                    // Rigidbody2D casaFamilia = GameObject.Find("CasaFamilia").GetComponent<Rigidbody2D>();
+                    if (player.GetComponent<Player>().tieneBandera)
+                    {
+                        GameObject.Find("Flag").GetComponent<BoxCollider2D>().enabled = true;
+                        player.GetComponent<Player>().tieneBandera = false;
+                    }
+
+                    player.GetComponent<Transform>().position = player.GetComponent<Player>().ReSpawnPoint.position; // new Vector2(casaFamilia.position.x, casaFamilia.position.y);
+                    player.GetComponent<Player>().vida = 100f;
+                }
+                Destroy(this.gameObject, (float)0.3);
+            }
         }
         Destroy(this.gameObject, 3);
     }
