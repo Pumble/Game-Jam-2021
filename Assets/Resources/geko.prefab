@@ -129,6 +129,7 @@ MonoBehaviour:
   rb: {fileID: 6253949350444991187}
   vida: 150
   characterType: 3
+  ReSpawnPoint: {fileID: 0}
 --- !u!114 &5304993574044175247
 MonoBehaviour:
   m_ObjectHideFlags: 0
