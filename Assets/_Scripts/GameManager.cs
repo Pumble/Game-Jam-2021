@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [Header("Game Manager del nivel")]
-    public static int puntosEquipoAliado;
-    public static int puntosEquipoEnemigo;
-    public static float tiempoPartida;
+    private static int puntosEquipoAliado;
+    private static int puntosEquipoEnemigo;
+    private static int tiempoPartida;
     public static bool partidaEnCurso;
 
     public Text puntosAliados;
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         return puntosEquipoEnemigo;
     }
 
-    public static float getTiempoPartida()
+    public static int getTiempoPartida()
     {
         return tiempoPartida;
     }
