@@ -38,14 +38,15 @@ public class Attack : MonoBehaviour
             if (enemyPlayer.GetComponent<PlayerMovement>().vida <= 0)
             {
                 Debug.Log("El jugador enemigo murio, regresa a la base ");
-                Rigidbody2D CasaDuendes = GameObject.Find("CasaDuendes").GetComponent<Rigidbody2D>();
+                // Rigidbody2D CasaDuendes = GameObject.Find("CasaDuendes").GetComponent<Rigidbody2D>();
                 if (enemyPlayer.GetComponent<PlayerMovement>().getTieneBandera())
                 {
                     GameObject.Find("Bandera").GetComponent<BoxCollider2D>().enabled = true;
                     enemyPlayer.GetComponent<PlayerMovement>().setTieneBandera(false);
                 }
 
-                enemyPlayer.GetComponent<Transform>().position = new Vector2(CasaDuendes.position.x, CasaDuendes.position.y);
+                // enemyPlayer.GetComponent<Transform>().position = new Vector2(CasaDuendes.position.x, CasaDuendes.position.y);
+                enemyPlayer.GetComponent<Transform>().position = enemyPlayer.GetComponent<PlayerMovement>().ReSpawnPoint.position;
                 enemyPlayer.GetComponent<PlayerMovement>().vida = 100f;
             }
             Destroy(this.gameObject, (float)0.3);
@@ -63,14 +64,15 @@ public class Attack : MonoBehaviour
                 if (player.GetComponent<PlayerMovement>().vida <= 0)
                 {
                     Debug.Log("El jugador murio, regresa a la base ");
-                    Rigidbody2D casaFamilia = GameObject.Find("CasaFamilia").GetComponent<Rigidbody2D>();
+                    // Rigidbody2D casaFamilia = GameObject.Find("CasaFamilia").GetComponent<Rigidbody2D>();
                     if (player.GetComponent<PlayerMovement>().getTieneBandera())
                     {
                         GameObject.Find("Bandera").GetComponent<BoxCollider2D>().enabled = true;
                         player.GetComponent<PlayerMovement>().setTieneBandera(false);
                     }
 
-                    player.GetComponent<Transform>().position = new Vector2(casaFamilia.position.x, casaFamilia.position.y);
+                    // player.GetComponent<Transform>().position = new Vector2(casaFamilia.position.x, casaFamilia.position.y);
+                    player.GetComponent<Transform>().position = player.GetComponent<PlayerMovement>().ReSpawnPoint.position;
                     player.GetComponent<PlayerMovement>().vida = 100f;
                     Destroy(this.gameObject, (float)0.3);
                 }

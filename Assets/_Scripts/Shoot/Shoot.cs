@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// USING AGREGADOS
+using Photon.Pun;
 
-public class Shoot : MonoBehaviour
+public class Shoot : MonoBehaviourPun
 {
     // REFERENCIA: https://www.youtube.com/watch?v=Qkh2IZoUNJo
     public GameObject bullet;
@@ -18,11 +20,14 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && shoot)
+        if (photonView.IsMine)
         {
-            shoot = false;
-            Instantiate(bullet, transform.position, transform.rotation);
-            StartCoroutine("coRoutineShoot");
+            if (Input.GetMouseButtonDown(0) && shoot)
+            {
+                shoot = false;
+                Instantiate(bullet, transform.position, transform.rotation);
+                StartCoroutine("coRoutineShoot");
+            }
         }
     }
 
