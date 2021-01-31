@@ -6,15 +6,15 @@ namespace Pun2Demo
 {
     public class PUN2_FlagSync : MonoBehaviourPun, IPunObservable
     {
-        Vector3 lastesPosition;
+        Vector3 lastestPosition;
 
         // Update is called once per frame
         void Update()
         {
-            if (lastesPosition != transform.position)
+            if (lastestPosition != transform.position)
             {
-                transform.right = transform.position - lastesPosition;
-                lastesPosition = transform.position;
+                transform.right = transform.position - lastestPosition;
+                lastestPosition = transform.position;
             }
         }
 
@@ -28,7 +28,7 @@ namespace Pun2Demo
             else
             {
                 //Network player, receive data
-                lastesPosition = (Vector3)stream.ReceiveNext();
+                lastestPosition = (Vector3)stream.ReceiveNext();
             }
         }
     }
