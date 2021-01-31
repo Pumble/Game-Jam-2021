@@ -23,11 +23,11 @@ public class ColliderBase : MonoBehaviour
             GameObject.Find(collision.name).GetComponent<Player>().tieneBandera = false;
             GameObject.Find("Flag").GetComponent<BoxCollider2D>().enabled = true;
 
-            Transform UbicaconBandera = GameObject.Find("UbicaconBandera").GetComponent<Transform>();
+            Transform UbicacionBandera = GameObject.Find("UbicacionBandera").GetComponent<Transform>();
 
             sound.PlayOneShot(audios[0]);
 
-            GameObject.Find("Flag").GetComponent<Transform>().position = new Vector2(UbicaconBandera.position.x, UbicaconBandera.position.y);
+            GameObject.Find("Flag").GetComponent<Transform>().position = new Vector2(UbicacionBandera.position.x, UbicacionBandera.position.y);
             GameManager.setPuntosEquipoAliado(GameManager.getPuntosEquipoAliado() + 1);
 
             Debug.Log("Punto Anotado " + GameManager.getPuntosEquipoAliado());
@@ -38,11 +38,11 @@ public class ColliderBase : MonoBehaviour
                 GameObject.Find(collision.name).GetComponent<Player>().tieneBandera = false;
                 GameObject.Find("Flag").GetComponent<BoxCollider2D>().enabled = true;
 
-                Transform UbicaconBandera = GameObject.Find("UbicaconBandera").GetComponent<Transform>();
+                Transform UbicacionBandera = GameObject.Find("UbicacionBandera").GetComponent<Transform>();
 
                 sound.PlayOneShot(audios[0]);
 
-                GameObject.Find("Flag").GetComponent<Transform>().position = new Vector2(UbicaconBandera.position.x, UbicaconBandera.position.y);
+                GameObject.Find("Flag").GetComponent<Transform>().position = new Vector2(UbicacionBandera.position.x, UbicacionBandera.position.y);
                 GameManager.setPuntosEquipoEnemigo(GameManager.getPuntosEquipoEnemigo() + 1);
 
                 Debug.Log("Punto Anotado " + GameManager.getPuntosEquipoEnemigo());
