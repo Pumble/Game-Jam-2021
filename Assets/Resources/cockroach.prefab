@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4366447038652150271}
   m_Layer: 0
   m_Name: cockroach
-  m_TagString: Player
+  m_TagString: enemyPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   rb: {fileID: 6253949350444991187}
   vida: 100
   characterType: 5
+  ReSpawnPoint: {fileID: 0}
 --- !u!114 &5304993574044175247
 MonoBehaviour:
   m_ObjectHideFlags: 0

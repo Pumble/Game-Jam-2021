@@ -33,6 +33,7 @@ namespace Pun2Demo
         [Header("Lista de personajes disponibles para jugar, establece el tipo del prefab")]
         public CharacterOptions characterType;
 
+        public Transform ReSpawnPoint;
         #endregion
 
         private void Awake()
@@ -53,7 +54,7 @@ namespace Pun2Demo
 
         private void FixedUpdate()
         {
-            if (GameManager.partidaEnCurso)
+            if (GameManager.partidaEnCurso && vida > 0)
             {
                 // MOVEMENT
                 Vector2 movement = new Vector2(HorizontalInput, VerticalInput);
@@ -92,11 +93,13 @@ namespace Pun2Demo
         }
 
         #region DEBUG
+
         void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireCube(transform.position, new Vector3(1, 1, 1));
         }
+
         #endregion
     }
 }

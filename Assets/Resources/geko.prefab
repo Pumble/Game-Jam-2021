@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 8117951284580248886}
   m_Layer: 0
   m_Name: geko
-  m_TagString: Player
+  m_TagString: enemyPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

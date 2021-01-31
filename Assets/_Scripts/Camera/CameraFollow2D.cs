@@ -1,19 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraFollow2D : MonoBehaviour
 {
-    public Transform Player;
-    public float CameraDistance = 5.0f;
+    public Transform target;
 
-    private void Awake()
-    {
-        GetComponent<UnityEngine.Camera>().orthographicSize = ((Screen.height / 2) / CameraDistance);
-    }
+    public float smootSpeed = 10f;
+    public Vector3 offset;
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
-        transform.position = new Vector2(Player.position.x, Player.position.y);
+        if (target)
+        {
+            Vector3 desiredPosition = target.position + offset;
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smootSpeed * Time.deltaTime);
+            transform.position = smoothedPosition;
+        }
     }
 }

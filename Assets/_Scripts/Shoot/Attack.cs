@@ -12,6 +12,11 @@ public class Attack : MonoBehaviour
     public int damage;
     public bool destroy;
 
+    /* 1- SE PUEDE MEJORAR SI LE AGREGAMOS UN SPAWN POINT POR DEFECTO A CADA
+     * JUGADOR, ASI SI MUERE, YA SABE CUAL ES SU PUNTO DE SALIDA
+     * 2- LA MUERTE Y EL DAÑO LO PODEMOS HACER POR EVENTOS, PARA ENCAPSULARLO
+     * TODO EN EL MISMO PLAYER MOVEMENT, ALLO PODRIAMOS TENER EL SPAWPOINT
+     */
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +31,7 @@ public class Attack : MonoBehaviour
         {
             GameObject enemyPlayer = GameObject.Find(collision.name);
             enemyPlayer.GetComponent<PlayerMovement>().vida -= damage;
-            Debug.Log("Sufrio daño, vida actual " + enemyPlayer.GetComponent<PlayerMovement>().vida);
+            Debug.Log("Sufrio daño: "+ damage + ", vida actual: " + enemyPlayer.GetComponent<PlayerMovement>().vida);
 
             sound.PlayOneShot(audios[0]);
 
@@ -39,7 +44,6 @@ public class Attack : MonoBehaviour
                     GameObject.Find("Bandera").GetComponent<BoxCollider2D>().enabled = true;
                     enemyPlayer.GetComponent<PlayerMovement>().setTieneBandera(false);
                 }
-
 
                 enemyPlayer.GetComponent<Transform>().position = new Vector2(CasaDuendes.position.x, CasaDuendes.position.y);
                 enemyPlayer.GetComponent<PlayerMovement>().vida = 100f;

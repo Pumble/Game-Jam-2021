@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Chancla
   - Chancleta
+  - Trebol
+  - enemyPlayer
   layers:
   - Default
   - TransparentFX

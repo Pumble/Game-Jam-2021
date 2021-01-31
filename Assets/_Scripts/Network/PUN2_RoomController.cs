@@ -22,7 +22,10 @@ namespace Pun2Demo
         public List<GameObject> playerPrefabs;
 
         //Player spawn point
-        public Transform spawnPoint;
+        [Header("Spawn point para los duendes")]
+        public Transform CasaDuendes;
+        [Header("Spawn point para la familia")]
+        public Transform CasaFamilia;
 
         private Camera _camera;
 
@@ -44,7 +47,6 @@ namespace Pun2Demo
 
             //We're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
             CharacterOptions selectedCharacter = (CharacterOptions)PhotonNetwork.LocalPlayer.TagObject;
-            Debug.Log("personaje seleccionado: " + selectedCharacter.ToString());
 
             GameObject character = null;
             foreach (GameObject c in playerPrefabs)
@@ -57,12 +59,25 @@ namespace Pun2Demo
             }
             if (character == null)
                 character = defaultPrefab;
-            Debug.Log("personaje a mostrar: " + character.name);
+
+            // SELECCIONAR DONDE DEBE HACER EL PRIMER SPAWN
+            Transform spawnPoint = null;
+            if (selectedCharacter == CharacterOptions.kid || selectedCharacter == CharacterOptions.mom || selectedCharacter == CharacterOptions.dad)
+                spawnPoint = CasaFamilia;
+            else if (selectedCharacter == CharacterOptions.rat || selectedCharacter == CharacterOptions.geko || selectedCharacter == CharacterOptions.cockroach)
+                spawnPoint = CasaDuendes;
+            else
+                spawnPoint = GetComponent<Transform>(); // En caso de que todo falle, sale en el 0.0.0
             GameObject player = PhotonNetwork.Instantiate(character.name, spawnPoint.position, Quaternion.identity, 0);
+            player.GetComponent<PlayerMovement>().ReSpawnPoint = spawnPoint; // ASIGNAR EL PUNTO DE SPAWN CORRESPONDIENTE
 
             // ASIGNAR LA CAMARA AL JUGADOR
             if (_camera != null && player != null)
-                _camera.transform.parent = player.transform;
+            {
+                _camera.GetComponent<CameraFollow2D>().target = player.transform;
+                // _camera.transform.parent = player.transform;
+                // _camera.transform.position = new Vector3(0, 0, -15); // REINICIAMOS LA CÁMARA DEL JUGADOR PARA QUE LO SIGA
+            }
         }
 
         #region OVERRIDES
