@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
     private void LateUpdate()
     {
         // REVISAR EL QUE YA GANO
+        // STATE WIN
 
         if (puntosAliados)
             puntosAliados.text = puntosEquipoAliado.ToString();
