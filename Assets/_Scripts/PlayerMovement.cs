@@ -26,9 +26,10 @@ namespace Pun2Demo
         public float vida = 100f;
 
         private Animator animator;
-        private AudioSource sound;
-        private List<AudioClip> audios = new List<AudioClip>();
+        public AudioSource sound;
+        public List<AudioClip> audios = new List<AudioClip>();
         private bool reproducirSonidoPaso = true;
+        public List<KeyCode> keys = new List<KeyCode>();
 
         [Header("Lista de personajes disponibles para jugar, establece el tipo del prefab")]
         public CharacterOptions characterType;
@@ -66,7 +67,7 @@ namespace Pun2Demo
                 {
                     GameObject.Find("Flag").GetComponent<Rigidbody2D>().MovePosition(new Vector2(rb.position.x + 2f, rb.position.y + 2f) + movement * moveSpeed * Time.fixedDeltaTime);
                 }
-                if (reproducirSonidoPaso && audios.Count > 0)
+                if (reproducirSonidoPaso && (audios.Count > 0) && (Input.GetKey(keys[0]) || Input.GetKey(keys[1]) || Input.GetKey(keys[2]) || Input.GetKey(keys[3])) )
                 {
                     sound.PlayOneShot(audios[0]);
                     reproducirSonidoPaso = false;
@@ -88,7 +89,7 @@ namespace Pun2Demo
 
         IEnumerator corrutinaReproducirPaso()
         {
-            yield return new WaitForSeconds((float)0.1);
+            yield return new WaitForSeconds((float)0.4);
             reproducirSonidoPaso = true;
         }
 

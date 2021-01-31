@@ -41,7 +41,7 @@ public class Attack : MonoBehaviour
                 Rigidbody2D CasaDuendes = GameObject.Find("CasaDuendes").GetComponent<Rigidbody2D>();
                 if (enemyPlayer.GetComponent<PlayerMovement>().getTieneBandera())
                 {
-                    GameObject.Find("Bandera").GetComponent<BoxCollider2D>().enabled = true;
+                    GameObject.Find("Flag").GetComponent<BoxCollider2D>().enabled = true;
                     enemyPlayer.GetComponent<PlayerMovement>().setTieneBandera(false);
                 }
 
@@ -66,7 +66,7 @@ public class Attack : MonoBehaviour
                     Rigidbody2D casaFamilia = GameObject.Find("CasaFamilia").GetComponent<Rigidbody2D>();
                     if (player.GetComponent<PlayerMovement>().getTieneBandera())
                     {
-                        GameObject.Find("Bandera").GetComponent<BoxCollider2D>().enabled = true;
+                        GameObject.Find("Flag").GetComponent<BoxCollider2D>().enabled = true;
                         player.GetComponent<PlayerMovement>().setTieneBandera(false);
                     }
 
