@@ -26,7 +26,7 @@ namespace Pun2Demo
         void Update()
         {
             //Update remote player (smooth this, this looks good, at the cost of some accuracy)
-            transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 2);
         }
     }
 }
