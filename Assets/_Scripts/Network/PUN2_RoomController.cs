@@ -23,9 +23,9 @@ namespace Pun2Demo
 
         //Player spawn point
         [Header("Spawn point para los duendes")]
-        public Transform CasaDuendes;
+        public Transform CasaDuendesPosition;
         [Header("Spawn point para la familia")]
-        public Transform CasaFamilia;
+        public Transform CasaFamiliaPosition;
 
         private Camera _camera;
 
@@ -61,15 +61,19 @@ namespace Pun2Demo
                 character = defaultPrefab;
 
             // SELECCIONAR DONDE DEBE HACER EL PRIMER SPAWN
-            Transform spawnPoint = null;
+            Vector3 spawnPoint = Vector3.zero;
             if (selectedCharacter == CharacterOptions.kid || selectedCharacter == CharacterOptions.mom || selectedCharacter == CharacterOptions.dad)
-                spawnPoint = CasaFamilia;
+            {
+                spawnPoint = CasaFamiliaPosition.position;
+            }
             else if (selectedCharacter == CharacterOptions.rat || selectedCharacter == CharacterOptions.geko || selectedCharacter == CharacterOptions.cockroach)
-                spawnPoint = CasaDuendes;
-            else
-                spawnPoint = GetComponent<Transform>(); // En caso de que todo falle, sale en el 0.0.0
-            GameObject player = PhotonNetwork.Instantiate(character.name, spawnPoint.position, Quaternion.identity, 0);
+            {
+                spawnPoint = CasaDuendesPosition.position;
+            }
+
+            GameObject player = PhotonNetwork.Instantiate(character.name, spawnPoint, Quaternion.identity, 0);
             player.GetComponent<Player>().ReSpawnPoint = spawnPoint; // ASIGNAR EL PUNTO DE SPAWN CORRESPONDIENTE
+            Debug.Log("TENGO QUE APARECER AQUI: " + player.GetComponent<Player>().ReSpawnPoint.ToString());
 
             // ASIGNAR LA CAMARA AL JUGADOR
             if (_camera != null && player != null)

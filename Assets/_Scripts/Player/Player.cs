@@ -11,17 +11,5 @@ public class Player : MonoBehaviour
     [Header("Lista de personajes disponibles para jugar, establece el tipo del prefab")]
     public CharacterOptions characterType;
     [Header("Punto al que regresa el personaje al morir")]
-    public Transform ReSpawnPoint;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Vector3 ReSpawnPoint;
 }

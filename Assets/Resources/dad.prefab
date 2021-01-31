@@ -413,4 +413,4 @@ MonoBehaviour:
   tieneBandera: 1
   vida: 200
   characterType: 2
-  ReSpawnPoint: {fileID: 0}
+  ReSpawnPoint: {x: 0, y: 0, z: 0}

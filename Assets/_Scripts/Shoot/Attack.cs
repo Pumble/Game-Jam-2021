@@ -46,7 +46,7 @@ public class Attack : MonoBehaviour
                 }
 
 
-                enemyPlayer.GetComponent<Transform>().position = enemyPlayer.GetComponent<Player>().ReSpawnPoint.position; // new Vector2(CasaDuendes.position.x, CasaDuendes.position.y);
+                enemyPlayer.GetComponent<Transform>().position = enemyPlayer.GetComponent<Player>().ReSpawnPoint; // new Vector2(CasaDuendes.position.x, CasaDuendes.position.y);
                 enemyPlayer.GetComponent<Player>().vida = 100f;
             }
             Destroy(this.gameObject, (float)0.3);
@@ -71,7 +71,7 @@ public class Attack : MonoBehaviour
                         player.GetComponent<Player>().tieneBandera = false;
                     }
 
-                    player.GetComponent<Transform>().position = player.GetComponent<Player>().ReSpawnPoint.position; // new Vector2(casaFamilia.position.x, casaFamilia.position.y);
+                    player.GetComponent<Transform>().position = player.GetComponent<Player>().ReSpawnPoint; // new Vector2(casaFamilia.position.x, casaFamilia.position.y);
                     player.GetComponent<Player>().vida = 100f;
                 }
                 Destroy(this.gameObject, (float)0.3);

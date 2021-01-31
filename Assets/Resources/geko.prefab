@@ -354,7 +354,7 @@ MonoBehaviour:
   tieneBandera: 0
   vida: 100
   characterType: 3
-  ReSpawnPoint: {fileID: 0}
+  ReSpawnPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &8569437691600094958
 GameObject:
   m_ObjectHideFlags: 0

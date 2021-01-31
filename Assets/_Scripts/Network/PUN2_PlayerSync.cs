@@ -16,6 +16,13 @@ namespace Pun2Demo
         Vector3 latestPos;
         Quaternion latestRot;
 
+        Player _player;
+
+        private void Awake()
+        {
+            _player = GetComponent<Player>();
+        }
+
         // Use this for initialization
         void Start()
         {
@@ -50,12 +57,20 @@ namespace Pun2Demo
                 //We own this player: send the others our data
                 stream.SendNext(transform.position);
                 stream.SendNext(transform.rotation);
+                stream.SendNext(_player.vida);
             }
             else
             {
                 //Network player, receive data
                 latestPos = (Vector3)stream.ReceiveNext();
                 latestRot = (Quaternion)stream.ReceiveNext();
+                float vida = (float)stream.ReceiveNext();
+
+                if (vida <= 0)
+                {
+                    transform.position = _player.ReSpawnPoint;
+                    latestPos = _player.ReSpawnPoint;
+                }
             }
         }
 

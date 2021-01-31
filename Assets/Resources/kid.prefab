@@ -412,4 +412,4 @@ MonoBehaviour:
   tieneBandera: 0
   vida: 100
   characterType: 0
-  ReSpawnPoint: {fileID: 0}
+  ReSpawnPoint: {x: 0, y: 0, z: 0}
