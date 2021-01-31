@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 461126900}
   - component: {fileID: 796738011489562286}
   m_Layer: 0
-  m_Name: mom
+  m_Name: dad
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8193000856625931033, guid: 99b4d9a82141eb24882653572c4671bb,
+  m_Sprite: {fileID: -3166856905969347514, guid: d543827397a416941922f67b1c8629be,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -124,10 +124,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cde17fbfbebe148b4c79f4b0d6b4c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 3
   rb: {fileID: 6253949350444991187}
-  vida: 135
-  characterType: 1
+  vida: 200
+  characterType: 2
 --- !u!114 &5304993574044175247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ Animator:
   m_GameObject: {fileID: 6253949350444991197}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e77439cca20facb41b7a73543d691230, type: 2}
+  m_Controller: {fileID: 9100000, guid: eba74e9463a2c3848a887123f04d6b64, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

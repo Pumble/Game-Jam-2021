@@ -238,6 +238,8 @@ MonoBehaviour:
   playerPrefabs:
   - {fileID: 6253949350444991197, guid: 073010d3fac6e7f47807a2855dee27f2, type: 3}
   - {fileID: 6253949350444991197, guid: 98b1cb4bc6555714f8e693386080b078, type: 3}
+  - {fileID: 6253949350444991197, guid: 8c0b1e25596a76d4894baeb352cb03e7, type: 3}
+  - {fileID: 6253949350444991197, guid: 4c027a9fd79a165448fdeb5c82c2c8cf, type: 3}
   spawnPoint: {fileID: 1704971561}
 --- !u!4 &1704971561
 Transform:
